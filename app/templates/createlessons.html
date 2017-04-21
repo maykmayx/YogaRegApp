@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Sangha Yoga</title>
+{#    <link rel="stylesheet" type="text/css" href='style.css'>#}
+</head>
+<body>
+<body>
+    <p>צרי אוטומטית את השיעורים הקבועים לשבוע הבא</p>
+    <p>הכניסי כאן את התאריך של יום ראשון (בשבועו עבורו תרצי ליצור השיעורים)</p>
+    <form action="/create" method="POST">
+        {% csrf_token %}
+        <input type="date" name="date"/>
+        <button type="submit">יאיי</button>
+    </form>
+</body>
+</html>

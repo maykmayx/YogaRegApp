@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Sangha Yoga</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+</head>
+<body>
+    <div class="main">
+        <div class="reg-wrapper">
+            <img src="https://preview.ibb.co/kEfgy5/headerimg.png">
+            <div class="reg-container">
+                <p class="intro">בחר שבוע</p>
+                <div class="weeks-container">
+                    <a href="{% url 'app:week' cur_week.url_rpr %}">{{ cur_week.dates }}</a>
+                    <a href="{% url 'app:week' next_week.url_rpr %}">{{ next_week.dates }}</a>
+                </div>
+            </div>
+            <footer>&copy; Site by May Yaaron</footer>
+        </div>
+    </div>
+
+</body>
+<html>

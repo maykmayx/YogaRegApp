@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Sangha Yoga</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}"></head>
+<body>
+    <div class="main">
+        <div class="reg-wrapper">
+            <img src="https://preview.ibb.co/kEfgy5/headerimg.png">
+            <div class="reg-container">
+                <form class="form" action="/register" method="POST">
+                    {% csrf_token %}
+                <p class="intro">
+                    </br>בחרו שיעור, השאירו פרטים מלאים והמערכת תאשר את כניסתכם לשיעור או לרשימת ההמתנה
+                    </br>* ביטול 12 שעות או פחות לפני תחילת השיעור גורר חיוב בסכום השיעור *
+                    </br>* הרשמה להמתנה לשיעור לא מחייבת את הגעתכם, רק אם יתאים לכם *
+                </p>
+                <br>
+                <div class="input-container">
+                    <input class="form-input" name="name" type="text" placeholder="שם" required>
+                    <input class="form-input" name="email" type="text" placeholder="מייל" required>
+                    <input class="form-input" name="phone" type="text" placeholder="טלפון" required>
+                </div>
+
+{#        <select name="lesson">#}
+{##}
+{#            {% for lesson in lessons %}#}
+{#            <option value="{{ lesson.pk }}">{{ lesson }}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+
+                <div class="days-container">
+                    <select name="choose-class">
+                        <optgroup label="ראשון">
+                                {% for lesson in lessons_sunday %}
+                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                {% endfor %}
+                        </optgroup>
+                        <optgroup label="שני">
+                                {% for lesson in lessons_monday %}
+                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                {% endfor %}
+                        </optgroup>
+                        <optgroup label="שלישי">
+                                {% for lesson in lessons_tuesday %}
+                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                {% endfor %}
+                        </optgroup>
+                        <optgroup label="רביעי">
+                                {% for lesson in lessons_wednesday %}
+                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                {% endfor %}
+                        </optgroup>
+                        <optgroup label="חמישי">
+                                {% for lesson in lessons_thursday %}
+                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                {% endfor %}
+                        </optgroup>
+                        <optgroup label="שישי">
+                                {% for lesson in lessons_friday %}
+                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                {% endfor %}
+                        </optgroup>
+                        <optgroup label="שבת">
+                                {% for lesson in lessons_thursday %}
+                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                {% endfor %}
+                        </optgroup>
+                    </select>
+
+{#                    <span class="sunday">#}
+{#                        <p>יום ראשון</p>#}
+{##}
+{#                        <select name="select-class-sunday">#}
+{#                            <option value="" disabled selected>בחר</option>#}
+{#                            {% for lesson in lessons_sunday %}#}
+{#                                <option value="{{ lesson.pk }}">{{ lesson.time }}</option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#                    </span>#}
+{##}
+{#                    <span class="monday">#}
+{#                        <p>יום שני</p>#}
+{#                        <select name="select-class-monday">#}
+{#                            <option value="" disabled selected>בחר</option>#}
+{#                            {% for lesson in lessons_monday %}#}
+{#                                <option value="{{ lesson.pk }}">{{ lesson.time }}</option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#                    </span>#}
+{##}
+{#                    <span class="tuesday">#}
+{#                        <p>יום שלישי</p>#}
+{#                        <select name="select-class-tuesday">#}
+{#                            <option value="" disabled selected>בחר</option>#}
+{#                            {% for lesson in lessons_tuesday %}#}
+{#                                <option value="{{ lesson.pk }}">{{ lesson.time }}</option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#                    </span>#}
+{##}
+{#                    <span class="thursday">#}
+{#                        <p>יום חמישי</p>#}
+{#                        <select name="select-class-thursday">#}
+{#                            <option value="" disabled selected>בחר</option>#}
+{#                            {% for lesson in lessons_thursday %}#}
+{#                                <option value="{{ lesson.pk }}">{{ lesson.time }}</option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#                    </span>#}
+                </div>
+                <button type="submit" class="submit-button">רשמי אותי</button>
+            </form>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
