@@ -27,7 +27,7 @@ SECRET_KEY = 'j2k5t#0y=5s09(!r&7#+r&v(hb$&w^*u=l_s&fb$o0j+9u!my*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://lia-yoga.herokuapp.com/']
 
 
 en_formats.DATETIME_FORMAT = "d b Y H:i:s"
@@ -139,3 +139,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
+
+try:
+    from .localsettings import *
+except:
+    pass
