@@ -120,10 +120,6 @@ div.reg-container{
 .main {
     top: 0px;
 }
-.days-container p {
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
 
 /* שם טלפון מייל */
 .input-container {
@@ -138,7 +134,7 @@ img {
     margin: 0 auto;
 }
 
-.form select {
+div.days-container select {
     /*display: block;*/
     border: 1px solid rgba(197, 205, 200, 0.8);
     /*background-color: rgba(255,255,255,0.5);*/
@@ -150,9 +146,7 @@ img {
     /*color: grey;*/
     /*transition-duration: 0.25s;*/
     /*font-weight: 300;*/
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 30px 10px 10px;
 }
 
 

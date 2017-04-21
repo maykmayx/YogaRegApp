@@ -23,16 +23,10 @@
                     <input class="form-input" name="email" type="text" placeholder="מייל" required>
                     <input class="form-input" name="phone" type="text" placeholder="טלפון" required>
                 </div>
-
-{#        <select name="lesson">#}
-{##}
-{#            {% for lesson in lessons %}#}
-{#            <option value="{{ lesson.pk }}">{{ lesson }}</option>#}
-{#            {% endfor %}#}
-{#        </select>#}
-
                 <div class="days-container">
+                <br>
                     <select name="choose-class">
+                        <option label="בחר/י שיעור" selected></option>
                         <optgroup label="ראשון">
                                 {% for lesson in lessons_sunday %}
                                     <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
@@ -69,52 +63,12 @@
                                 {% endfor %}
                         </optgroup>
                     </select>
-
-{#                    <span class="sunday">#}
-{#                        <p>יום ראשון</p>#}
-{##}
-{#                        <select name="select-class-sunday">#}
-{#                            <option value="" disabled selected>בחר</option>#}
-{#                            {% for lesson in lessons_sunday %}#}
-{#                                <option value="{{ lesson.pk }}">{{ lesson.time }}</option>#}
-{#                            {% endfor %}#}
-{#                        </select>#}
-{#                    </span>#}
-{##}
-{#                    <span class="monday">#}
-{#                        <p>יום שני</p>#}
-{#                        <select name="select-class-monday">#}
-{#                            <option value="" disabled selected>בחר</option>#}
-{#                            {% for lesson in lessons_monday %}#}
-{#                                <option value="{{ lesson.pk }}">{{ lesson.time }}</option>#}
-{#                            {% endfor %}#}
-{#                        </select>#}
-{#                    </span>#}
-{##}
-{#                    <span class="tuesday">#}
-{#                        <p>יום שלישי</p>#}
-{#                        <select name="select-class-tuesday">#}
-{#                            <option value="" disabled selected>בחר</option>#}
-{#                            {% for lesson in lessons_tuesday %}#}
-{#                                <option value="{{ lesson.pk }}">{{ lesson.time }}</option>#}
-{#                            {% endfor %}#}
-{#                        </select>#}
-{#                    </span>#}
-{##}
-{#                    <span class="thursday">#}
-{#                        <p>יום חמישי</p>#}
-{#                        <select name="select-class-thursday">#}
-{#                            <option value="" disabled selected>בחר</option>#}
-{#                            {% for lesson in lessons_thursday %}#}
-{#                                <option value="{{ lesson.pk }}">{{ lesson.time }}</option>#}
-{#                            {% endfor %}#}
-{#                        </select>#}
-{#                    </span>#}
                 </div>
                 <button type="submit" class="submit-button">רשמי אותי</button>
             </form>
                 </form>
             </div>
+        <footer>&copy; Site by <a href="mailto:may.yaaron@gmail.com?Subject=Build%20me%20a%20website!" target="_top">May Yaaron</a></footer>
         </div>
     </div>
 

@@ -3,18 +3,23 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Sangha Yoga</title>
-{#    <link rel="stylesheet" type="text/css" href='style.css'>#}
-</head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
 </head>
 <body>
-השיעור מלא!
-נרשמת לרשימת ההמתנה.
-במידה ויתפנה מקום לשיעור, תקבל הודעה על כך בטלפון.
-לבירורים צרו קשר עם ליה 0528027567.
-יום מקסים!
-
-    <a href="/">לרישום נוסף</a>
+<div class="main">
+    <div class="reg-wrapper">
+        <img src="https://preview.ibb.co/kEfgy5/headerimg.png">
+        <div class="reg-container">
+            <p> השיעור מלא!</p>
+            <p>נרשמת לרשימת ההמתנה.</p>
+            <p>במידה ויתפנה מקום לשיעור, תקבל הודעה על כך בטלפון.</p>
+            <p>לבירורים צרו קשר עם ליה 0528027567.</p>
+            <p>יום מקסים!</p>
+            <a href="/">לרישום נוסף</a>
+        </div>
+        <footer>&copy; Site by <a href="mailto:may.yaaron@gmail.com?Subject=Build%20me%20a%20website!" target="_top">May Yaaron</a></footer>
+    </div>
+</div>
 </body>
-</html>
+<html>
