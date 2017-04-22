@@ -49,6 +49,9 @@ div.reg-container{
     vertical-align: middle;
 }
 
+div.reg-container p {
+    margin: 10px;
+}
 
 /*.form{*/
     /*padding: 20px 0;*/
