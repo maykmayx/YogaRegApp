@@ -100,7 +100,8 @@ def submit_lessons(request):
         day = date_object + datetime.timedelta(days=int(lesson.day.strftime('%u')))
         time = lesson.time
         max_participants = lesson.max_participants
-        new_lesson, created = models.Person.objects.get_or_create(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
+        # new_lesson, created = models.Person.objects.get_or_create(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
+        new_lesson = models.Lesson(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
         new_lesson.save()
     return render(request, 'yay.html')
 
