@@ -8,7 +8,7 @@ class Person(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=1024)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -36,7 +36,7 @@ class Lesson(models.Model):
         temp = self.day.strftime('%u')
         return (temp % 7) + 1
 
-    def __str__(self):
+    def __unicode__(self):
         date_formatted = self.day.strftime('%d') + '/' + self.day.strftime('%m')
         return date_formatted + ' @' + str(self.time)
 
@@ -45,7 +45,7 @@ class Registration(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey(Lesson)
 
-    def __str__(self):
+    def __unicode__(self):
         return '%s registered for %s' % (self.person, self.lesson)
 
 
@@ -53,5 +53,5 @@ class Waiting(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey(Lesson)
 
-    def __str__(self):
+    def __unicode__(self):
         return '%s waiting for %s' % (self.person, self.lesson)
