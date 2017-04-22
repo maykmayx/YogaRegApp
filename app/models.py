@@ -43,7 +43,7 @@ class Lesson(models.Model):
     #     return date_formatted + ' @' + str(self.time)
     def __unicode__(self):
         date_formatted = self.day.strftime('%d') + '/' + self.day.strftime('%m')
-        return date_formatted + ' @ u%s' % (self.time)
+        return date_formatted + ' @%s' % (self.time)
 
 class Registration(models.Model):
     person = models.ForeignKey(Person)
