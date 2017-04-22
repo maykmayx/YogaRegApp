@@ -119,7 +119,7 @@ div.reg-container{
 }
 
 .main {
-    top: 0px;
+    vertical-align: middle;
 }
 
 /* שם טלפון מייל */
