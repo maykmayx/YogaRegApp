@@ -36,6 +36,7 @@ body{
 }
 .reg-wrapper {
     position: relative;
+    margin: auto;
 }
 
 div.reg-container{
