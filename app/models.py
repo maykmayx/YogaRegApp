@@ -8,7 +8,9 @@ class Person(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=1024)
 
-    # def __unicode__(self):
+    def __unicode__(self):
+        return u'%s' % (self.name)
+    # def __str__(self):
     #     return self.name
     #
 
@@ -39,7 +41,9 @@ class Lesson(models.Model):
     # def __unicode__(self):
     #     date_formatted = self.day.strftime('%d') + '/' + self.day.strftime('%m')
     #     return date_formatted + ' @' + str(self.time)
-
+    def __unicode__(self):
+        date_formatted = self.day.strftime('%d') + '/' + self.day.strftime('%m')
+        return date_formatted + ' @ u%s' % (self.time)
 
 class Registration(models.Model):
     person = models.ForeignKey(Person)
