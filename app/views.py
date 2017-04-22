@@ -75,13 +75,10 @@ def register(request):
     if lesson.num_enrolled > lesson.max_participants:
         waiting = models.Waiting(person=person, lesson=lesson)
         result = 'waiting.html'
-        # lesson.waiting_list.add(person)
         waiting.save()
     else:
         registration = models.Registration(person=person, lesson=lesson)
         result = 'enrolled.html'
-        # lesson.enrolled_list.add(person)
-        # models.Lesson.objects.filter(pk=lesson_pk).update(enrolled=F('enrolled') + 1)
         lesson.num_enrolled += 1
         registration.save()
     lesson.save()
@@ -103,7 +100,7 @@ def submit_lessons(request):
         day = date_object + datetime.timedelta(days=int(lesson.day.strftime('%u')))
         time = lesson.time
         max_participants = lesson.max_participants
-        new_lesson = models.Lesson(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
+        new_lesson, created = models.Person.objects.get_or_create(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
         new_lesson.save()
     return render(request, 'yay.html')
 
