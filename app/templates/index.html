@@ -23,11 +23,17 @@
             <img src="https://preview.ibb.co/kEfgy5/headerimg.png">
             <div class="container">
             <div class="reg-container">
-                    <div class="row"><p class="intro">בחר שבוע</p></div>
                     <div class="row">
-                        <div class="weeks-container">
-                            <a href="{% url 'app:week' cur_week.url_rpr %}">{{ cur_week.dates }}</a>
-                            <a href="{% url 'app:week' next_week.url_rpr %}">{{ next_week.dates }}</a>
+                        <div class="col-xs-6">
+                            <p>בחר שבוע</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="weeks-container">
+                                <a href="{% url 'app:week' cur_week.url_rpr %}">{{ cur_week.dates }}</a>
+                                <a href="{% url 'app:week' next_week.url_rpr %}">{{ next_week.dates }}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
