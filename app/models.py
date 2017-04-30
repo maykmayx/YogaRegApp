@@ -19,8 +19,8 @@ class Lesson(models.Model):
     num_enrolled = models.IntegerField(default=0, editable=False)
     regular = models.BooleanField(default=True)
 
-    # class Meta:
-        # ordering = 'day'
+    class Meta:
+        ordering = ['day']
     # code = models.CharField(max_length=1024, editable=False)
 
     # (mod 7) + 1 to permute to hebrew schedule
