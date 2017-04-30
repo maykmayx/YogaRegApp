@@ -70,10 +70,10 @@ div.reg-container p {
     outline: 0;
     border: 1px solid rgba(197, 205, 200, 0.8);
     background-color: rgba(255,255,255,0.5);
-    width: 150px;
+    width: auto;
     border-radius: 3px;
     padding: 10px 15px;
-    margin: 0 auto 0px auto;
+    margin: 0 auto 0 auto;
     text-align: center;
     font-size: 12px;
     color: white;
