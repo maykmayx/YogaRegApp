@@ -125,6 +125,7 @@ div.reg-container p {
 
 form {
     background: white;
+    border-radius: 3px;
 }
 
 .days-container {
