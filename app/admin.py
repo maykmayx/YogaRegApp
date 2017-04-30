@@ -9,11 +9,6 @@ admin.site.register(models.Person)
 
 class RegistrationInline(admin.TabularInline):
     model = models.Registration
-    list_display = 'name'
-
-    def name(self):
-        return self.person.name
-
 
 class WaitingInline(admin.TabularInline):
     model = models.Waiting
