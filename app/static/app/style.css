@@ -122,6 +122,11 @@ div.reg-container p {
     /*flex-direction: row-reverse;*/
     justify-content: center;
 }
+
+form {
+    background: white;
+}
+
 .days-container {
     /*display: flex;*/
     /*flex-direction: row-reverse;*/
@@ -170,6 +175,7 @@ div.days-container select {
 .form input:focus{
     background-color: white;
     color: #68beb4;
+
 }
 
 button {
