@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Sangha Yoga</title>
+    <!-- TODO copy for other htmls-->
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- TODO until here -->
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+
+</head>
+<body>
+<div class="main">
+        <div class="reg-wrapper">
+            <img src="https://preview.ibb.co/kEfgy5/headerimg.png">
+            <div class="container">
+                <form class="form" action="/register" method="POST" name="registration_form" id='registration_form' class="form-inline">
+                    {% csrf_token %}
+                    <div class="row">
+                        <p class="intro">
+                            </br>בחרו שיעור, השאירו פרטים מלאים והמערכת תאשר את כניסתכם לשיעור או לרשימת ההמתנה
+                            </br>* ביטול הגעתכם עד 12 שעות לפני מועד השיעור לא מחייב בתשלום *
+                            </br>* הרשמה להמתנה לשיעור לא מחייבת את הגעתכם, רק אם יתאים לכם *
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <input id="name" class="form-control input-group-lg reg_name" type="text" name="name"
+                                   placeholder="שם" required/>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <input id="email" class="form-control input-group-lg reg_name" type="email" name="email"
+                                   placeholder="מייל" required/>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <input id="[hone" class="form-control input-group-lg reg_name" type="number" name="phone"
+                                   placeholder="טלפון" required/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <input id="username" class="form-control input-group-lg" type="text" autocapitalize='off' name="username"
+                                   title="Enter username"
+                                   placeholder="Username"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="days-container">
+                            <select name="choose-class">
+                                <option label="בחר/י שיעור" selected></option>
+                                <optgroup label="ראשון">
+                                        {% for lesson in lessons_sunday %}
+                                            <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                        {% endfor %}
+                                </optgroup>
+                                <optgroup label="שני">
+                                        {% for lesson in lessons_monday %}
+                                            <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                        {% endfor %}
+                                </optgroup>
+                                <optgroup label="שלישי">
+                                        {% for lesson in lessons_tuesday %}
+                                            <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                        {% endfor %}
+                                </optgroup>
+                                <optgroup label="רביעי">
+                                        {% for lesson in lessons_wednesday %}
+                                            <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                        {% endfor %}
+                                </optgroup>
+                                <optgroup label="חמישי">
+                                        {% for lesson in lessons_thursday %}
+                                            <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                        {% endfor %}
+                                </optgroup>
+                                <optgroup label="שישי">
+                                        {% for lesson in lessons_friday %}
+                                            <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                        {% endfor %}
+                                </optgroup>
+                                <optgroup label="שבת">
+                                        {% for lesson in lessons_thursday %}
+                                            <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
+                                        {% endfor %}
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button type="submit" class="submit-button">רשמי אותי</button>
+                    </div>
+                </form>
+            </div>
+            <footer>&copy; Site by <a href="mailto:may.yaaron@gmail.com?Subject=Build%20me%20a%20website!" target="_top">May Yaaron</a></footer>
+    </div>
+</div>
+</body>
+</html>

@@ -4,12 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Sangha Yoga</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}"></head>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+</head>
 <body>
     <div class="main">
         <div class="reg-wrapper">
             <img src="https://preview.ibb.co/kEfgy5/headerimg.png">
             <div class="reg-container">
+
+
                 <form class="form" action="/register" method="POST">
                     {% csrf_token %}
                 <p class="intro">
@@ -20,8 +23,8 @@
                 <br>
                 <div class="input-container">
                     <input class="form-input" name="name" type="text" placeholder="שם" required>
-                    <input class="form-input" name="email" type="text" placeholder="מייל" required>
-                    <input class="form-input" name="phone" type="text" placeholder="טלפון" required>
+                    <input class="form-input" name="email" type="email" placeholder="מייל" required>
+                    <input class="form-input" name="phone" type="number" placeholder="טלפון" required>
                 </div>
                 <div class="days-container">
                 <br>

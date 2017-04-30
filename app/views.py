@@ -45,7 +45,7 @@ def get_weeks():
 def week(request, week_date):
     dates = week_date.split('-')[0].split('/')
     start = datetime.date(2017, int(dates[1]), int(dates[0]))
-    return render(request, 'week.html', {
+    return render(request, 'weekk.html', {
         'lessons_sunday': models.Lesson.objects.filter(day=start),
         'lessons_monday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=1)),
         'lessons_tuesday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=2)),
@@ -53,17 +53,9 @@ def week(request, week_date):
         'lessons_thursday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=4)),
         'lessons_friday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=5)),
         'lessons_saturday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=2)),
-
-        # 'b lessons': models.Lesson.objects.all().filter(),
-        # 'cur_lessons': models.Lesson.object.filter(lesson__date__gt=CUR_WEEK_START)
     })
-# Entry.objects.exclude(pub_date__gt=datetime.date(2005, 1, 3), headline='Hello')
-# select-class-sunday:anone
-# select-class-monday:anone
-# select-class-tuesday:10
-# select-class-thursday:anone
 
-# TODO handle multiple lessons
+
 def register(request):
     name = request.POST['name']
     email = request.POST['email']
@@ -100,8 +92,8 @@ def submit_lessons(request):
         day = date_object + datetime.timedelta(days=int(lesson.day.strftime('%u')))
         time = lesson.time
         max_participants = lesson.max_participants
-        # new_lesson, created = models.Person.objects.get_or_create(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
-        new_lesson = models.Lesson(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
+        new_lesson, created = models.Lesson.objects.get_or_create(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
+        # new_lesson = models.Lesson(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
         new_lesson.save()
     return render(request, 'yay.html')
 
