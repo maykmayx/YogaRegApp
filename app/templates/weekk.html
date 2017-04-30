@@ -27,7 +27,7 @@
                     <form class="form" action="/register" method="POST" name="registration_form" id='registration_form' class="form-inline">
                         {% csrf_token %}
                         <div class="row">
-                            <p class="intro">
+                            <p class="col-xs-12">
                                 </br>בחרו שיעור, השאירו פרטים מלאים והמערכת תאשר את כניסתכם לשיעור או לרשימת ההמתנה
                                 </br>* ביטול הגעתכם עד 12 שעות לפני מועד השיעור לא מחייב בתשלום *
                                 </br>* הרשמה להמתנה לשיעור לא מחייבת את הגעתכם, רק אם יתאים לכם *
@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="days-container">
+                            <div class="days-container col-xs-12">
                                 <select name="choose-class">
                                     <option label="בחר/י שיעור" selected></option>
                                     <optgroup label="ראשון">
