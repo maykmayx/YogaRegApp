@@ -29,16 +29,20 @@ def index(request):
 def get_url_rpr(week):
     return str(week).replace(' ', '')
 
-
+# TODO - thursday-saturday should show next week + next following week
 def get_weeks():
     now = datetime.datetime.now()
     cur_day_code = (int(now.strftime('%u')) % 7) + 1
+    # if cur_day_code < 6:
     cur_week_start = now - datetime.timedelta(days=cur_day_code - 1)
     cur_week_end = cur_week_start + datetime.timedelta(days=6)
     next_week_start = cur_week_end + datetime.timedelta(days=1)
     next_week_end = next_week_start + datetime.timedelta(days=6)
     cur_week = cur_week_start.strftime('%d/%m') + ' - ' + cur_week_end.strftime('%d/%m')
     next_week = next_week_start.strftime('%d/%m') + ' - ' + next_week_end.strftime('%d/%m')
+    # else:
+    #     cur_week_start = now - datetime.timedelta(days=cur_day_code - 1)
+
     return cur_week, next_week
 
 
