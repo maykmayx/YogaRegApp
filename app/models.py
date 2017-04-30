@@ -20,7 +20,7 @@ class Lesson(models.Model):
     regular = models.BooleanField(default=True)
 
     class Meta:
-        order_with_respect_to = 'day'
+        ordering = 'day'
     # code = models.CharField(max_length=1024, editable=False)
 
     # (mod 7) + 1 to permute to hebrew schedule
