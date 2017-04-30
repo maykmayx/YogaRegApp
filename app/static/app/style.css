@@ -118,13 +118,13 @@ div.reg-container p {
     /*font-family: Rubik, sans-serif ;*/
 
 .weeks-container {
-    display: flex;
-    flex-direction: row-reverse;
+    /*display: flex;*/
+    /*flex-direction: row-reverse;*/
     justify-content: center;
 }
 .days-container {
-    display: flex;
-    flex-direction: row-reverse;
+    /*display: flex;*/
+    /*flex-direction: row-reverse;*/
     justify-content: center;
 }
 
@@ -134,8 +134,8 @@ div.reg-container p {
 
 /* שם טלפון מייל */
 .input-container {
-    display: flex;
-    flex-direction: row-reverse;
+    /*display: flex;*/
+    /*flex-direction: row-reverse;*/
     justify-content: center;
 }
 
