@@ -21,8 +21,9 @@
 <div class="main">
         <div class="reg-wrapper">
             <img src="https://preview.ibb.co/kEfgy5/headerimg.png">
-            <div class="reg-container">
-                <div class="container">
+            <div class="container">
+                <div class="reg-container">
+
                     <form class="form" action="/register" method="POST" name="registration_form" id='registration_form' class="form-inline">
                         {% csrf_token %}
                         <div class="row">
@@ -48,13 +49,6 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="form-group">
-                                <input id="username" class="form-control input-group-lg" type="text" autocapitalize='off' name="username"
-                                       title="Enter username"
-                                       placeholder="Username"/>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="days-container">
                                 <select name="choose-class">
