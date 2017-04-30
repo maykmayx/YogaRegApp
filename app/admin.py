@@ -22,6 +22,7 @@ class WaitingInline(admin.TabularInline):
 class LessonAdmin(admin.ModelAdmin):
     inlines = [RegistrationInline, WaitingInline]
     exclude = ['code']
+    list_display = ['day','time','num_enrolled','regular']
 
 #  ⁠⁠⁠class InqAdmin(admin.ModelAdmin):
 # list_display = ('name','company', 'email', 'subject','date')
