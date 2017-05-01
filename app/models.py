@@ -21,6 +21,7 @@ class Lesson(models.Model):
     num_enrolled = models.IntegerField(default=0, editable=True)
     regular = models.BooleanField(default=True)
 
+
     def decrease_num(self):
         self.num_enrolled -= 1
 
@@ -33,20 +34,21 @@ class Lesson(models.Model):
         date_formatted = self.day.strftime('%d') + '/' + self.day.strftime('%m')
         return date_formatted + ' @%s' % (self.time)
 
-def rem_reg(self):
-    self.num_enrolled -= 1
-    return
+# def rem_reg(self):
+#     self.num_enrolled -= 1
+#     return
 
 class Registration(models.Model):
     person = models.ForeignKey(Person)
-    lesson = models.ForeignKey(Lesson, on_delete=rem_reg)
+    lesson = models.ForeignKey(Lesson)
     #
     # def delete(self, **kwargs):
-    #     self.lesson.decrease_num()
+    #     pk = self.lesson._get_pk_val
+    #     Lesson.objects.get(pk=pk).decrease_num()
     #     super().delete()
     #     # self.delete()
     #     return
-
+    #
 
 
 
