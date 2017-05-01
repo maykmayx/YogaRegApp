@@ -79,7 +79,8 @@ def register(request):
         lesson.num_enrolled += 1
         registration.save()
     lesson.save()
-    return render(request, result)
+    lesson_rep = lesson
+    return render(request, result, {'lesson': lesson_rep})
 
 
 def create_lessons(request):
