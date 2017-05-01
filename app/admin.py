@@ -30,10 +30,13 @@ class LessonAdmin(admin.ModelAdmin):
 
     def save_formset(self, request, form, formset, change):
         # super(LessonAdmin, self).save_formset(request, form, formset, change)
-        if formset.model == models.Registration:
-            obj = formset.instance
-            if obj.reformat:
-                obj.my_delete()
+        # if formset.model == models.Registration:
+        #     obj = formset.instance
+        #     if obj.reformat:
+        #         obj.my_delete()
+        #     obj.save()
+        for obj in formset.deleted_objects:
+            obj.my_delete()
             obj.save()
         formset.save()
     #         obj.lesson.num_enrolled -= 1
