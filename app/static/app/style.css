@@ -61,6 +61,10 @@ div.reg-container p {
     text-align: center;
 }
 
+div.intro {
+    vertical-align: middle;
+    text-align: center;
+}
 
 /*.form{*/
     /*padding: 20px 0;*/
