@@ -6,15 +6,15 @@ from django.contrib.admin import DateFieldListFilter
 
 admin.site.register(models.Person)
 
-
-def deleteReg():
-    return
+#
+# def deleteReg():
+#     return
 
 
 class RegistrationInline(admin.TabularInline):
     model = models.Registration
     fields = ('person',)
-    actions = [deleteReg]
+    # actions = [deleteReg]
 
 
 class WaitingInline(admin.TabularInline):

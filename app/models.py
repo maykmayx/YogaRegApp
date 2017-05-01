@@ -42,13 +42,13 @@ class Registration(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey(Lesson)
     #
-    def my_delete(self, **kwargs):
-        pk = self.lesson._get_pk_val
-        Lesson.objects.get(pk=pk).decrease_num()
-        super().delete()
-        # self.delete()
-        return
-    #
+    # def my_delete(self, **kwargs):
+    #     pk = self.lesson._get_pk_val
+    #     Lesson.objects.get(pk=pk).decrease_num()
+    #     super().delete()
+    #     # self.delete()
+    #     return
+    # #
 
 
 
