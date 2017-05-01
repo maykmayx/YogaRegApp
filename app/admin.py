@@ -31,14 +31,15 @@ class LessonAdmin(admin.ModelAdmin):
     def save_formset(self, request, form, formset, change):
         # super(LessonAdmin, self).save_formset(request, form, formset, change)
         instances = formset.save()
-
-        if formset.deleted_objects:
-            for obj in formset.deleted_objects:
-                if obj.lesson:
-                    obj.lesson.decrease_num()
-                    # obj.delete()
         for instance in instances:
-            instance.save()
+            instance.decrease_num()
+        # if formset.deleted_objects:
+        #     for obj in formset.deleted_objects:
+        #         if obj.lesson:
+        #             obj.lesson.decrease_num()
+        #             # obj.delete()
+        # for instance in instances:
+        #     instance.save()
 
         # #     obj.save()
         # for obj in formset.deleted_objects:
