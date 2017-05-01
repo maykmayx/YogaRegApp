@@ -19,6 +19,9 @@ class Lesson(models.Model):
     num_enrolled = models.IntegerField(default=0, editable=False)
     regular = models.BooleanField(default=True)
 
+    def decrease_num(self):
+        self.num_enrolled -=1
+
     # class Meta:
         # ordering = ('day'
     # code = models.CharField(max_length=1024, editable=False)
@@ -36,6 +39,10 @@ class Lesson(models.Model):
 class Registration(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey(Lesson)
+    # def my_delete(self, **kwargs):
+    #     self.lesson.num_enrolled -= 1
+    #     self.delete()
+    #     return
 
 
 class Waiting(models.Model):
