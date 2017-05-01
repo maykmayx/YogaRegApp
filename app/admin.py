@@ -27,9 +27,28 @@ class LessonAdmin(admin.ModelAdmin):
     exclude = ('code','num_enrolled')
     list_display = ('day', 'time', 'num_enrolled', 'regular')
     date_hierarchy = 'day'
-    #
-    # def save_formset(self, request, form, formset, change):
-    #     if formset.model == models.Registration:
-    #         formset.instance.delete()
+
+    def save_formset(self, request, form, formset, change):
+        instances = formset.save(commit=False)
+        for instance in instances:
+            instance.save()
+        for obj in formset.deleted_objects:
+            obj.num_enrolled -=1
+                
 
 
+#
+# class Model2Inline(admin.TabularInline):
+#     model = Model2
+#
+# class Model1Admin(admin.ModelAdmin):
+#     inlines = [Model2Inline]
+#     def save_formset(self, request, form, formset, change):
+#         super(Model1Admin, self).save_formset(self, request, form, formset, change)
+#         if formset.model == Model2:
+#             obj = formset.instance
+#             if obj.reformat:
+#                 obj.model2.all().delete()
+#                 # creating new objects
+#
+#             obj.save()
