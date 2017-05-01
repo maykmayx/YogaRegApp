@@ -24,18 +24,18 @@ class WaitingInline(admin.TabularInline):
 @admin.register(models.Lesson)
 class LessonAdmin(admin.ModelAdmin):
     inlines = [RegistrationInline, WaitingInline]
-    exclude = ('code','num_enrolled')
+    exclude = ('code',)
     list_display = ('day', 'time', 'num_enrolled', 'regular')
     date_hierarchy = 'day'
 
-    def save_formset(self, request, form, formset, change):
-        super(LessonAdmin).save_formset(request, form, formset, change)
-        if formset.model == models.Registration:
-            obj = formset.instance
-            if obj:
-                form.instance.num_enrolled -= 1
-                obj.delete()
-            obj.save()
+    # def save_formset(self, request, form, formset, change):
+    #     super(LessonAdmin).save_formset(request, form, formset, change)
+    #     if formset.model == models.Registration:
+    #         obj = formset.instance
+    #         if obj.reformat:
+    #             form.instance.num_enrolled -= 1
+    #             obj.delete()
+    #         obj.save()
     # def save_formset(self, request, form, formset, change):
     #     # super(LessonAdmin, self).save_formset(request, form, formset, change)
     #     instances = formset.save()
