@@ -42,14 +42,7 @@ class LessonAdmin(admin.ModelAdmin):
     #     for instance in instances:
     #         if instance.model == models.Lesson:
     #             instance.num_enrolled -= 1
-    #     # if formset.deleted_objects:
-    #     #     for obj in formset.deleted_objects:
-    #     #         if obj.lesson:
-    #     #             obj.lesson.decrease_num()
-    #     #             # obj.delete()
-    #     # for instance in instances:
-    #     #     instance.save()
-    #
+
     #     # #     obj.save()
     #     # for obj in formset.deleted_objects:
     #     #     obj.my_delete()
