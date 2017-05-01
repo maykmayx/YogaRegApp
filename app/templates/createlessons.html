@@ -3,22 +3,39 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Sangha Yoga</title>
+    <!-- TODO copy for other htmls-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- TODO until here -->
+
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="main">
     <div class="reg-wrapper">
-        <img src="https://preview.ibb.co/kEfgy5/headerimg.png">
+        <img class="img-responsive" src="https://preview.ibb.co/kEfgy5/headerimg.png">     <!-- TODO img -->
+        <div class="container">
         <div class="reg-container">
-            <p>צרי אוטומטית את השיעורים הקבועים לשבוע הבא</p>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>צרי אוטומטית את השיעורים הקבועים לשבוע הבא</p>
             <p>הכניסי כאן את התאריך של יום ראשון (בשבועו עבורו תרצי ליצור השיעורים)</p>
             <form action="/create" method="POST">
                 {% csrf_token %}
                 <input type="date" name="date"/>
                 <button type="submit">יאיי</button>
             </form>
+                </div>
+            </div>
         </div>
+            </div>
         <footer>&copy; Site by <a href="mailto:may.yaaron@gmail.com?Subject=Build%20me%20a%20website!" target="_top">May Yaaron</a></footer>
     </div>
 </div>
