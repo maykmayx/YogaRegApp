@@ -8,6 +8,14 @@ admin.site.register(models.Person)
 
 
 class RegistrationInline(admin.TabularInline):
+    fieldsets = (
+        (
+            None,
+            {
+                'fields': ('person',)
+            }
+        ),
+    )
     model = models.Registration
 
 class WaitingInline(admin.TabularInline):
