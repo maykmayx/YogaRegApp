@@ -7,12 +7,16 @@ from django.contrib.admin import DateFieldListFilter
 admin.site.register(models.Person)
 
 
+
 class RegistrationInline(admin.TabularInline):
     model = models.Registration
-    raw_id_fields = ('person',)
+    fields = ('person','person_name')
+    def person_name(self):
+        return self.person.name
 
 class WaitingInline(admin.TabularInline):
     model = models.Waiting
+
 
 @admin.register(models.Lesson)
 class LessonAdmin(admin.ModelAdmin):
