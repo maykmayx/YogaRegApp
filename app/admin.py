@@ -34,7 +34,7 @@ class LessonAdmin(admin.ModelAdmin):
         obj = formset.instance
         if obj.reformat:
             obj.lesson.num_enrolled -= 1
-            obj.save()
+        obj.save()
                         # creating new objects
         # instances = formset.save(commit=False)
         # for instance in instances:
