@@ -36,9 +36,10 @@ class Lesson(models.Model):
 class Registration(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey(Lesson)
+
     def delete(self, **kwargs):
         self.lesson.num_enrolled -= 1
-        self.delete()
+        # self.delete()
         return
 
 
