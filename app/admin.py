@@ -28,17 +28,17 @@ class LessonAdmin(admin.ModelAdmin):
     list_display = ('day', 'time', 'num_enrolled', 'regular')
     date_hierarchy = 'day'
 
-    # def save_formset(self, request, form, formset, change):
-    #     # super(LessonAdmin, self).save_formset(request, form, formset, change)
-    #     instances = formset.save()
-    #
-    #     if formset.deleted_objects:
-    #         for obj in formset.deleted_objects:
-    #             if obj.lesson:
-    #                 obj.lesson.num_enrolled -=1
-    #                 obj.delete()
-    #     for instance in instances:
-    #         instance.save()
+    def save_formset(self, request, form, formset, change):
+        # super(LessonAdmin, self).save_formset(request, form, formset, change)
+        instances = formset.save()
+
+        if formset.deleted_objects:
+            for obj in formset.deleted_objects:
+                if obj.lesson:
+                    obj.lesson.num_enrolled -=1
+                    obj.delete()
+        for instance in instances:
+            instance.save()
 
         # #     obj.save()
         # for obj in formset.deleted_objects:
