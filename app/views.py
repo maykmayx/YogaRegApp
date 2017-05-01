@@ -79,7 +79,7 @@ def register(request):
         lesson.num_enrolled += 1
         registration.save()
     lesson.save()
-    lesson_rep = lesson
+    lesson_rep = lesson.__unicode__()
     return render(request, result, {'lesson': lesson_rep})
 
 
