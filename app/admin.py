@@ -39,7 +39,6 @@ class LessonAdmin(admin.ModelAdmin):
         for instance in instances:
             instance.save()
 
-        #         obj.my_delete()
         # #     obj.save()
         # for obj in formset.deleted_objects:
         #     obj.my_delete()
