@@ -10,9 +10,8 @@ admin.site.register(models.Person)
 
 class RegistrationInline(admin.TabularInline):
     model = models.Registration
-    fields = ('person','person_name')
-    def person_name(self):
-        return self.person.name
+    fields = ('person',)
+
 
 class WaitingInline(admin.TabularInline):
     model = models.Waiting
