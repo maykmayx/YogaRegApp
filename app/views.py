@@ -79,7 +79,7 @@ def register(request):
         lesson.num_enrolled += 1
         registration.save()
     lesson.save()
-    lesson_rpr = lesson.split('@')
+    lesson_rpr = lesson.__unicode__().split('@')
     return render(request, result, {
         'lesson_date': lesson_rpr[0],
         'lesson_time': lesson_rpr[1]
