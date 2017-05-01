@@ -33,7 +33,7 @@ class LessonAdmin(admin.ModelAdmin):
         instances = formset.save()
         for instance in instances:
             if instance.model == models.Lesson:
-                instance.decrease_num()
+                instance.num_enrolled -= 1
         # if formset.deleted_objects:
         #     for obj in formset.deleted_objects:
         #         if obj.lesson:
