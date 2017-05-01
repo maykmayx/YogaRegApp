@@ -18,7 +18,7 @@ class Lesson(models.Model):
     day = models.DateField(null=True)
     time = models.CharField(max_length=1024)
     max_participants = models.IntegerField(default=10)
-    num_enrolled = models.IntegerField(default=0, editable=False)
+    num_enrolled = models.IntegerField(default=0, editable=True)
     regular = models.BooleanField(default=True)
 
     def decrease_num(self):
@@ -53,7 +53,7 @@ class Waiting(models.Model):
 
 def remove_reg(sender, instance, **kwargs):
     reg = Registration.objects.get(pk=instance.pk)
-    reg.lesson.num_enrolled -= 1
+    reg.lesson.decrease_num()
 
 pre_delete.connect(remove_reg, sender=Registration)
 
