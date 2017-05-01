@@ -1,6 +1,8 @@
 from datetime import date, datetime
 
 from django.db import models
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 
 class Person(models.Model):
@@ -47,3 +49,11 @@ class Registration(models.Model):
 class Waiting(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey(Lesson)
+
+
+def remove_reg(sender, instance, **kwargs):
+    lesson = Lesson.objects.get(pk=instance.pk)
+    lesson.num_enrolled -= 1
+
+pre_delete.connect(remove_reg, sender=Registration)
+
