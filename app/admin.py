@@ -29,7 +29,7 @@ class LessonAdmin(admin.ModelAdmin):
     date_hierarchy = 'day'
 
     def save_formset(self, request, form, formset, change):
-        # super(LessonAdmin, self).save_formset(self, request, form, formset, change)
+        super(LessonAdmin).save_formset(request, form, formset, change)
         if formset.model == models.Registration:
             obj = formset.instance
             if obj:
