@@ -50,9 +50,10 @@ class Waiting(models.Model):
     lesson = models.ForeignKey(Lesson)
 
 
+@receiver(pre_delete, sender=Registration)
 def remove_reg(sender, instance, **kwargs):
     reg = Registration.objects.get(pk=instance.pk)
     reg.lesson.decrease_num()
 
-pre_delete.connect(remove_reg, sender=Registration)
+# pre_delete.connect(remove_reg, sender=Registration)
 
