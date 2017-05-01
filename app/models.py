@@ -38,8 +38,9 @@ class Registration(models.Model):
     lesson = models.ForeignKey(Lesson)
 
     def delete(self, **kwargs):
-        # self.lesson.decrease_num()
-        self.delete()
+        self.lesson.decrease_num()
+        super().delete()
+        # self.delete()
         return
 
 
