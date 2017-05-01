@@ -29,9 +29,9 @@ class LessonAdmin(admin.ModelAdmin):
     exclude = ('code',)
     list_display = ('day', 'time', 'num_enrolled', 'regular')
     date_hierarchy = 'day'
-
-    def save_formset(self, request, form, formset, change):
-        if formset.model == models.Registration:
-            formset.instance.delete()
+    #
+    # def save_formset(self, request, form, formset, change):
+    #     if formset.model == models.Registration:
+    #         formset.instance.delete()
 
 
