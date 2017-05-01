@@ -22,8 +22,7 @@ class Lesson(models.Model):
     regular = models.BooleanField(default=True)
 
     def decrease_num(self):
-        self.num_enrolled -=1
-
+        self.num_enrolled -= 1
 
     # (mod 7) + 1 to permute to hebrew schedule
     def get_day_num(self):

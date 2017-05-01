@@ -26,7 +26,7 @@ class WaitingInline(admin.TabularInline):
 @admin.register(models.Lesson)
 class LessonAdmin(admin.ModelAdmin):
     inlines = [RegistrationInline, WaitingInline]
-    exclude = ('code',)
+    exclude = ('code','num_enrolled')
     list_display = ('day', 'time', 'num_enrolled', 'regular')
     date_hierarchy = 'day'
     #
