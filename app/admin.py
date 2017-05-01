@@ -35,7 +35,8 @@ class LessonAdmin(admin.ModelAdmin):
         #     for obj in formset.deleted_objects:
         #         obj.
         obj = formset.instance
-        obj.my_delete()
+        obj.num_enrolled -= 1
+        # obj.my_delete()
         for instance in instances:
             instance.save()
 
