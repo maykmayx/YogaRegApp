@@ -59,6 +59,11 @@ div.reg-container p {
     /*margin-top: 10px;*/
 }
 
+p {
+    text-align: center;
+    vertical-align: center;
+}
+
 /*.form{*/
     /*padding: 20px 0;*/
     /*position: relative;*/
