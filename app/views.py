@@ -57,6 +57,7 @@ def week(request, week_date):
         'lessons_thursday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=4)),
         'lessons_friday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=5)),
         'lessons_saturday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=2)),
+        'cur_week': week_date
     })
 
 
