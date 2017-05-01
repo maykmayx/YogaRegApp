@@ -57,12 +57,10 @@ div.reg-container{
 
 div.reg-container p {
     margin-top: 10px;
+    vertical-align: middle;
+    text-align: center;
 }
 
-p {
-    text-align: center;
-    vertical-align: center;
-}
 
 /*.form{*/
     /*padding: 20px 0;*/
