@@ -29,26 +29,34 @@ class LessonAdmin(admin.ModelAdmin):
     date_hierarchy = 'day'
 
     def save_formset(self, request, form, formset, change):
-        # super(LessonAdmin, self).save_formset(request, form, formset, change)
-        instances = formset.save()
-        for instance in instances:
-            if instance.model == models.Lesson:
-                instance.num_enrolled -= 1
-        # if formset.deleted_objects:
-        #     for obj in formset.deleted_objects:
-        #         if obj.lesson:
-        #             obj.lesson.decrease_num()
-        #             # obj.delete()
-        # for instance in instances:
-        #     instance.save()
-
-        # #     obj.save()
-        # for obj in formset.deleted_objects:
-        #     obj.my_delete()
-        #     # obj.save()
-        # formset.save()
-    #         obj.lesson.num_enrolled -= 1
-    #     obj.save()
+        super(LessonAdmin, self).save_formset(self, request, form, formset, change)
+        if formset.model == models.Registration:
+            obj = formset.instance
+            if obj.reformat:
+                obj.lesson.num_enrolled -= 1
+                obj.delete()
+            obj.save()
+    # def save_formset(self, request, form, formset, change):
+    #     # super(LessonAdmin, self).save_formset(request, form, formset, change)
+    #     instances = formset.save()
+    #     for instance in instances:
+    #         if instance.model == models.Lesson:
+    #             instance.num_enrolled -= 1
+    #     # if formset.deleted_objects:
+    #     #     for obj in formset.deleted_objects:
+    #     #         if obj.lesson:
+    #     #             obj.lesson.decrease_num()
+    #     #             # obj.delete()
+    #     # for instance in instances:
+    #     #     instance.save()
+    #
+    #     # #     obj.save()
+    #     # for obj in formset.deleted_objects:
+    #     #     obj.my_delete()
+    #     #     # obj.save()
+    #     # formset.save()
+    # #         obj.lesson.num_enrolled -= 1
+    # #     obj.save()
     #                     # creating new objects
     #     # instances = formset.save(commit=False)
     #     # for instance in instances:
