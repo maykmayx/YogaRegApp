@@ -22,9 +22,6 @@ class Lesson(models.Model):
     def decrease_num(self):
         self.num_enrolled -=1
 
-    # class Meta:
-        # ordering = ('day'
-    # code = models.CharField(max_length=1024, editable=False)
 
     # (mod 7) + 1 to permute to hebrew schedule
     def get_day_num(self):
