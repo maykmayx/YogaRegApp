@@ -39,10 +39,10 @@ class Lesson(models.Model):
 class Registration(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey(Lesson)
-    # def my_delete(self, **kwargs):
-    #     self.lesson.num_enrolled -= 1
-    #     self.delete()
-    #     return
+    def delete(self, **kwargs):
+        self.lesson.num_enrolled -= 1
+        self.delete()
+        return
 
 
 class Waiting(models.Model):
