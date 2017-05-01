@@ -38,12 +38,12 @@ class Lesson(models.Model):
 class Registration(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey(Lesson)
-
-    def delete(self, **kwargs):
-        self.lesson.decrease_num()
-        super().delete()
-        # self.delete()
-        return
+    #
+    # def delete(self, **kwargs):
+    #     self.lesson.decrease_num()
+    #     super().delete()
+    #     # self.delete()
+    #     return
 
 
 class Waiting(models.Model):
