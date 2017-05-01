@@ -32,6 +32,6 @@ class LessonAdmin(admin.ModelAdmin):
 
     def save_formset(self, request, form, formset, change):
         if formset.model == models.Registration:
-            formset.instane.delete()
+            formset.instance.delete()
 
 
