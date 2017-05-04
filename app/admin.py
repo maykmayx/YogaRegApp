@@ -13,7 +13,13 @@ admin.site.register(models.Person)
 
 class RegistrationInline(admin.TabularInline):
     model = models.Registration
-    fields = ('person',)
+    fields = ('get_name',)
+
+    def get_name(self, obj):
+        return obj.book.author
+
+    get_name.short_description = 'name'
+    get_name.admin_order_field = 'person__name'
     # actions = [deleteReg]
     # list_display = ('person__name',)
 
