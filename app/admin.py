@@ -13,13 +13,14 @@ admin.site.register(models.Person)
 
 class RegistrationInline(admin.TabularInline):
     model = models.Registration
-    fields = ('get_name',)
+    list_display = ('get_name',)
 
     def get_name(self, obj):
         return obj.person.name
 
-    get_name.short_description = 'name'
-    get_name.admin_order_field = 'person__name'
+    get_name.admin_order_field = 'person'  # Allows column order sorting
+    get_name.short_description = 'Person name'  # Renames column head
+
     # actions = [deleteReg]
     # list_display = ('person__name',)
 
