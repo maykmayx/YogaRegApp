@@ -13,10 +13,10 @@ admin.site.register(models.Person)
 
 class RegistrationInline(admin.TabularInline):
     model = models.Registration
-    fields = ('name',)
+    fields = ('get_name',)
 
     def get_name(self, obj):
-        return obj.book.author
+        return obj.person.name
 
     get_name.short_description = 'name'
     get_name.admin_order_field = 'person__name'
