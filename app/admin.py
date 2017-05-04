@@ -13,7 +13,7 @@ admin.site.register(models.Person)
 
 class RegistrationInline(admin.TabularInline):
     model = models.Registration
-    fields = ('person__name', 'person__email', 'person__phone')
+    fields = ('person',)
     # actions = [deleteReg]
     # list_display = ('person__name',)
 
@@ -28,6 +28,7 @@ class LessonAdmin(admin.ModelAdmin):
     exclude = ('code',)
     list_display = ('day', 'time', 'num_enrolled', 'regular')
     date_hierarchy = 'day'
+    list_filter = ('day',)
 
     # def save_formset(self, request, form, formset, change):
     #     super(LessonAdmin).save_formset(request, form, formset, change)
