@@ -13,8 +13,9 @@ admin.site.register(models.Person)
 
 class RegistrationInline(admin.TabularInline):
     model = models.Registration
-    fields = ('person',)
+    fields = ('person__name', 'person__email', 'person__phone')
     # actions = [deleteReg]
+    # list_display = ('person__name',)
 
 
 class WaitingInline(admin.TabularInline):

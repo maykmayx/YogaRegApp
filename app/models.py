@@ -34,6 +34,9 @@ class Lesson(models.Model):
         date_formatted = self.day.strftime('%d') + '/' + self.day.strftime('%m')
         return date_formatted + ' @%s' % (self.time)
 
+    # class Meta:
+
+
 # def rem_reg(self):
 #     self.num_enrolled -= 1
 #     return
