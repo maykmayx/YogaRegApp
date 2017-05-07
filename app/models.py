@@ -21,7 +21,6 @@ class Lesson(models.Model):
     num_enrolled = models.IntegerField(default=0, editable=True)
     regular = models.BooleanField(default=True)
 
-
     def decrease_num(self):
         self.num_enrolled -= 1
 

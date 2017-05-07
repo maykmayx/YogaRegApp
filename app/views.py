@@ -29,12 +29,15 @@ def index(request):
 def get_url_rpr(week):
     return str(week).replace(' ', '')
 
-# TODO - thursday-saturday should show next week + next following week
+# 
 def get_weeks():
     now = datetime.datetime.now()
     cur_day_code = (int(now.strftime('%u')) % 7) + 1
-    # if cur_day_code < 6:
-    cur_week_start = now - datetime.timedelta(days=cur_day_code - 1)
+    if cur_day_code > 5:
+        buffer = 8 - cur_day_code  # if friday add 2, if saturday add 1
+        cur_week_start = now + datetime.timedelta(days=buffer)
+    else:
+        cur_week_start = now - datetime.timedelta(days=cur_day_code - 1)
     cur_week_end = cur_week_start + datetime.timedelta(days=6)
     next_week_start = cur_week_end + datetime.timedelta(days=1)
     next_week_end = next_week_start + datetime.timedelta(days=6)
@@ -98,7 +101,7 @@ def submit_lessons(request):
     date_object = datetime.datetime.strptime(input_date, '%Y-%m-%d')
     lessons = models.Lesson.objects.filter(regular=True)
     for lesson in lessons:
-        day = date_object + datetime.timedelta(days=int(lesson.day.strftime('%u')))
+        day = date_object + datetime.timedelta(days=int(lesson.get_day_num()))
         time = lesson.time
         max_participants = lesson.max_participants
         new_lesson, created = models.Lesson.objects.get_or_create(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)

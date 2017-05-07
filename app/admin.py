@@ -68,19 +68,3 @@ class LessonAdmin(admin.ModelAdmin):
     #     #     obj.delete()
 
 
-
-#
-# class Model2Inline(admin.TabularInline):
-#     model = Model2
-#
-# class Model1Admin(admin.ModelAdmin):
-#     inlines = [Model2Inline]
-#     def save_formset(self, request, form, formset, change):
-#         super(Model1Admin, self).save_formset(self, request, form, formset, change)
-#         if formset.model == Model2:
-#             obj = formset.instance
-#             if obj.reformat:
-#                 obj.model2.all().delete()
-#                 # creating new objects
-#
-#             obj.save()
