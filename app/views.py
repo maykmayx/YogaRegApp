@@ -101,8 +101,8 @@ def submit_lessons(request):
     date_object = datetime.datetime.strptime(input_date, '%Y-%m-%d')
     lessons = models.Lesson.objects.filter(regular=True)
     for lesson in lessons:
-        day_code = int(lesson.day.strftime('%u'))
-        delta = (day_code % 7) + 1
+        day_code = lesson.day.strftime('%u')
+        delta = (int(day_code) % 7) + 1
         day = date_object + datetime.timedelta(days=delta)
         time = lesson.time
         max_participants = lesson.max_participants
