@@ -27,7 +27,7 @@ class Lesson(models.Model):
     # (mod 7) + 1 to permute to hebrew schedule
     def get_day_num(self):
         temp = self.day.strftime('%u')
-        return (temp % 7) + 1
+        return int((temp % 7) + 1)
 
     def __unicode__(self):
         date_formatted = self.day.strftime('%d') + '/' + self.day.strftime('%m')
