@@ -101,7 +101,8 @@ def submit_lessons(request):
     date_object = datetime.datetime.strptime(input_date, '%Y-%m-%d')
     lessons = models.Lesson.objects.filter(regular=True)
     for lesson in lessons:
-        day = date_object + datetime.timedelta(days=lesson.get_day_num())
+        delta = int((lesson.day.strftime('%u') % 7) + 1)
+        day = date_object + datetime.timedelta(days=delta)
         time = lesson.time
         max_participants = lesson.max_participants
         new_lesson, created = models.Lesson.objects.get_or_create(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
