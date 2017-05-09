@@ -44,7 +44,6 @@ class Lesson(models.Model):
         self.num_enrolled = count
         self.save()
 
-
     # enrolled = models.ManyToManyField(Registration, related_name='enrolls')
     # waitings = models.ManyToManyField(Waiting, related_name='waits')
 
