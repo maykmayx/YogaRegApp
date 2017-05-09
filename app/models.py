@@ -69,6 +69,6 @@ class Lesson(models.Model):
         return date_formatted + ' @%s' % self.time
 
 
-# Rerun the totals for each ChangeType whenever a Change is saved or deleted.
+# Rerun the count for lesson's num enrolled whenever a Change is saved or deleted.
 signals.post_save.connect(update_count, sender=Registration)
 signals.post_delete.connect(update_count, sender=Registration)
