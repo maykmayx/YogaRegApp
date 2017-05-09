@@ -33,7 +33,7 @@ class Lesson(models.Model):
     day = models.DateField(null=True)
     time = models.CharField(max_length=1024)
     max_participants = models.IntegerField(default=10)
-    regular = models.BooleanField(default=True)
+    regular = models.BooleanField(default=False)
     num_enrolled = models.IntegerField(default=0, editable=False)
 
     # make num_enrolled update with number of registrations
