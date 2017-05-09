@@ -1,9 +1,8 @@
 from datetime import date, datetime
 
 from django.db import models
-from django.db.models.signals import pre_delete
-from django.dispatch import Signal
-
+from django.db.models import signals
+from app.signals import update_count
 
 class Person(models.Model):
     name = models.CharField(max_length=1024)
@@ -17,11 +16,16 @@ class Registration(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey('Lesson')
 
+    def __unicode__(self):
+        return self.person.name
+
 
 class Waiting(models.Model):
     person = models.ForeignKey(Person)
     lesson = models.ForeignKey('Lesson')
 
+    def __unicode__(self):
+        return self.person.name
 
 
 
@@ -29,18 +33,26 @@ class Lesson(models.Model):
     day = models.DateField(null=True)
     time = models.CharField(max_length=1024)
     max_participants = models.IntegerField(default=10)
-    num_enrolled = models.IntegerField(default=0, editable=True)
     regular = models.BooleanField(default=True)
-    enrolled = models.ManyToManyField(Registration, related_name='enrolls')
-    waitings = models.ManyToManyField(Waiting, related_name='waits')
+    num_enrolled = models.IntegerField(default=0, editable=False)
 
-    @property
-    def waiting_list(self):
-        return list(self.waitings.all())
+    # make num_enrolled update with number of registrations
+    def update_num_enrolled(self):
+        count = self.registration_set.count()
+        self.num_enrolled = count
+        self.save()
 
-    @property
-    def enrolled_list(self):
-        return list(self.enrolled.all())
+
+    # enrolled = models.ManyToManyField(Registration, related_name='enrolls')
+    # waitings = models.ManyToManyField(Waiting, related_name='waits')
+
+    # @property
+    # def waiting_list(self):
+    #     return list(self.waitings.all())
+    #
+    # @property
+    # def enrolled_list(self):
+    #     return list(self.enrolled.all())
 
     def decrease_num(self):
         self.num_enrolled -= 1
@@ -57,3 +69,6 @@ class Lesson(models.Model):
         return date_formatted + ' @%s' % self.time
 
 
+# Rerun the totals for each ChangeType whenever a Change is saved or deleted.
+signals.post_save.connect(update_count, sender=Registration)
+signals.post_delete.connect(update_count, sender=Registration)

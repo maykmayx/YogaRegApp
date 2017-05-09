@@ -75,13 +75,13 @@ def register(request):
     if lesson.num_enrolled >= lesson.max_participants:
         waiting = models.Waiting(person=person, lesson=lesson)
         waiting.save()
-        lesson.waitings.add(waiting)
+        # lesson.waitings.add(waiting)
         result = 'waiting.html'
     else:
         registration = models.Registration(person=person, lesson=lesson)
         registration.save()
         # lesson.num_enrolled += 1
-        lesson.enrolled.add(registration)
+        # lesson.enrolled.add(registration)
         result = 'enrolled.html'
 
     lesson.save()
