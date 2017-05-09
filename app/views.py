@@ -111,13 +111,13 @@ def submit_lessons(request):
         time = lesson.time
         max_participants = lesson.max_participants
         new_lesson, created = models.Lesson.objects.get_or_create(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
+        new_lesson.save()
         for reg in models.Registration.objects.filter(lesson__pk=lesson.pk):
             new_reg, created = models.Registration.objects.get_or_create(lesson=new_lesson, person=reg.person)
             new_reg.save()
         # new_lesson = models.Lesson(day=day, time=time, max_participants=max_participants, num_enrolled=0, regular=False)
 
 
-        new_lesson.save()
     return render(request, 'yay.html')
 
 
