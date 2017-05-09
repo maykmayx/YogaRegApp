@@ -79,8 +79,8 @@ def register(request):
         result = 'waiting.html'
     else:
         registration = models.Registration(person=person, lesson=lesson)
-        lesson.update_num_enrolled()
         registration.save()
+        lesson.update_num_enrolled()
         # lesson.num_enrolled += 1
         # lesson.enrolled.add(registration)
         result = 'enrolled.html'
