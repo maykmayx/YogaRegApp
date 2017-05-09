@@ -98,8 +98,12 @@
                                     </optgroup>
                                     <optgroup label="שבת">
                                             {% for lesson in lessons_saturday %}
-                                                <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
-                                                {% if lesson.full %}
+                                                <option value="{{ lesson.pk }}">{{ lesson.time }}
+                                                {% if lesson.full == True %}
+                                                    <span>(מלא)</span>
+                                                {% endif %}
+                                                </option>
+
                                             {% endfor %}
                                     </optgroup>
                                 </select>

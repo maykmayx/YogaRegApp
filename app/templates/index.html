@@ -19,7 +19,7 @@
 <body>
     <div class="main">
         <div class="reg-wrapper">
-        <img class="img-responsive" src="https://preview.ibb.co/kEfgy5/headerimg.png">     <!-- TODO img -->
+        <img class="img-responsive" src="https://preview.ibb.co/kEfgy5/headerimg.png">
             <div class="container">
             <div class="reg-container">
                     <div class="row">
@@ -31,9 +31,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="weeks-container">
-                                <label>השבוע הנוכחי:</label>
                                 <a href="{% url 'app:week' cur_week.url_rpr %}" dir="ltr">{{ cur_week.dates }}</a>
-                                <label>השבוע הבא:</label>
                                 <a href="{% url 'app:week' next_week.url_rpr %}" dir="ltr">{{ next_week.dates }}</a>
                             </div>
                         </div>
