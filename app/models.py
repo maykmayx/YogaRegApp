@@ -28,17 +28,19 @@ class Waiting(models.Model):
         return self.person.name
 
 
-
 class Lesson(models.Model):
     day = models.DateField(null=True)
     time = models.CharField(max_length=1024)
     max_participants = models.IntegerField(default=10)
     regular = models.BooleanField(default=False)
     num_enrolled = models.IntegerField(default=0, editable=False)
+    full = models.BooleanField(default=False)
 
     # make num_enrolled update with number of registrations
     def update_num_enrolled(self):
         count = self.registration_set.count()
+        if count == self.max_participants:
+            self.full = True
         self.num_enrolled = count
         self.save()
 
@@ -53,10 +55,6 @@ class Lesson(models.Model):
     # @property
     # def enrolled_list(self):
     #     return list(self.enrolled.all())
-
-    def decrease_num(self):
-        self.num_enrolled -= 1
-
 
 
     # (mod 7) + 1 to permute to hebrew schedule
