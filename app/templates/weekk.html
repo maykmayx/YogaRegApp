@@ -67,7 +67,7 @@
                                 <select name="choose-class">
                                     <option label="בחר/י שיעור" selected></option>
                                     <optgroup label="ראשון">
-                                            {% for lesson in lessons_saturday %}
+                                            {% for lesson in lessons_sunday %}
                                                 <option value="{{ lesson.pk }}">{{ lesson.time }}
                                                 {% if lesson.full == True %}
                                                     <span>(מלא)</span>
@@ -76,7 +76,7 @@
                                             {% endfor %}
                                     </optgroup>
                                     <optgroup label="שני">
-                                            {% for lesson in lessons_saturday %}
+                                            {% for lesson in lessons_monday %}
                                                 <option value="{{ lesson.pk }}">{{ lesson.time }}
                                                 {% if lesson.full == True %}
                                                     <span>(מלא)</span>
@@ -85,7 +85,7 @@
                                             {% endfor %}
                                     </optgroup>
                                     <optgroup label="שלישי">
-                                            {% for lesson in lessons_saturday %}
+                                            {% for lesson in lessons_tuesday %}
                                                 <option value="{{ lesson.pk }}">{{ lesson.time }}
                                                 {% if lesson.full == True %}
                                                     <span>(מלא)</span>
@@ -94,7 +94,7 @@
                                             {% endfor %}
                                     </optgroup>
                                     <optgroup label="רביעי">
-                                            {% for lesson in lessons_saturday %}
+                                            {% for lesson in lessons_wednesday %}
                                                 <option value="{{ lesson.pk }}">{{ lesson.time }}
                                                 {% if lesson.full == True %}
                                                     <span>(מלא)</span>
@@ -103,7 +103,7 @@
                                             {% endfor %}
                                     </optgroup>
                                     <optgroup label="חמישי">
-                                            {% for lesson in lessons_saturday %}
+                                            {% for lesson in lessons_thursday %}
                                                 <option value="{{ lesson.pk }}">{{ lesson.time }}
                                                 {% if lesson.full == True %}
                                                     <span>(מלא)</span>
@@ -112,7 +112,7 @@
                                             {% endfor %}
                                     </optgroup>
                                     <optgroup label="שישי">
-                                            {% for lesson in lessons_saturday %}
+                                            {% for lesson in lessons_friday %}
                                                 <option value="{{ lesson.pk }}">{{ lesson.time }}
                                                 {% if lesson.full == True %}
                                                     <span>(מלא)</span>
