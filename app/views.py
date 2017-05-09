@@ -74,13 +74,16 @@ def register(request):
     # check for room in class
     if lesson.num_enrolled >= lesson.max_participants:
         waiting = models.Waiting(person=person, lesson=lesson)
-        result = 'waiting.html'
         waiting.save()
+        lesson.waitings.add(waiting)
+        result = 'waiting.html'
     else:
         registration = models.Registration(person=person, lesson=lesson)
-        result = 'enrolled.html'
-        lesson.num_enrolled += 1
         registration.save()
+        # lesson.num_enrolled += 1
+        lesson.enrolled.add(registration)
+        result = 'enrolled.html'
+
     lesson.save()
     lesson_rpr = lesson.__unicode__().split('@')
     return render(request, result, {

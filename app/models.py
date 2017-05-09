@@ -13,6 +13,17 @@ class Person(models.Model):
     def __unicode__(self):
         return u'%s' % (self.name)
 
+class Registration(models.Model):
+    person = models.ForeignKey(Person)
+    lesson = models.ForeignKey('Lesson')
+
+
+class Waiting(models.Model):
+    person = models.ForeignKey(Person)
+    lesson = models.ForeignKey('Lesson')
+
+
+
 
 class Lesson(models.Model):
     day = models.DateField(null=True)
@@ -20,9 +31,21 @@ class Lesson(models.Model):
     max_participants = models.IntegerField(default=10)
     num_enrolled = models.IntegerField(default=0, editable=True)
     regular = models.BooleanField(default=True)
+    enrolled = models.ManyToManyField(Registration, related_name='enrolls')
+    waitings = models.ManyToManyField(Waiting, related_name='waits')
+
+    @property
+    def waiting_list(self):
+        return list(self.waitings.all())
+
+    @property
+    def enrolled_list(self):
+        return list(self.enrolled.all())
 
     def decrease_num(self):
         self.num_enrolled -= 1
+
+
 
     # (mod 7) + 1 to permute to hebrew schedule
     def get_day_num(self):
@@ -31,44 +54,6 @@ class Lesson(models.Model):
 
     def __unicode__(self):
         date_formatted = self.day.strftime('%d') + '/' + self.day.strftime('%m')
-        return date_formatted + ' @%s' % (self.time)
+        return date_formatted + ' @%s' % self.time
 
-    # class Meta:
-
-
-# def rem_reg(self):
-#     self.num_enrolled -= 1
-#     return
-
-class Registration(models.Model):
-    person = models.ForeignKey(Person)
-    lesson = models.ForeignKey(Lesson)
-    #
-    # def my_delete(self, **kwargs):
-    #     pk = self.lesson._get_pk_val
-    #     Lesson.objects.get(pk=pk).decrease_num()
-    #     super().delete()
-    #     # self.delete()
-    #     return
-    # #
-
-
-
-class Waiting(models.Model):
-    person = models.ForeignKey(Person)
-    lesson = models.ForeignKey(Lesson)
-
-# rem_reg = Signal(providing_args=["lesson"])
-#
-# def send_rem_reg(self, lesson):
-#
-
-
-#
-# @receiver(pre_delete, sender=Registration)
-# def remove_reg(sender, instance, **kwargs):
-#     reg = Registration.objects.get(pk=instance.pk)
-#     reg.lesson.decrease_num()
-
-# pre_delete.connect(remove_reg, sender=Registration)
 
