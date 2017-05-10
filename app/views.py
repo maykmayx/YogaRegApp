@@ -43,9 +43,6 @@ def get_weeks():
     next_week_end = next_week_start + datetime.timedelta(days=6)
     cur_week = cur_week_start.strftime('%d/%m') + ' - ' + cur_week_end.strftime('%d/%m')
     next_week = next_week_start.strftime('%d/%m') + ' - ' + next_week_end.strftime('%d/%m')
-    # else:
-    #     cur_week_start = now - datetime.timedelta(days=cur_day_code - 1)
-
     return cur_week, next_week
 
 
