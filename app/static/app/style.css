@@ -66,12 +66,6 @@ div.intro {
     text-align: center;
 }
 
-/*.form{*/
-    /*padding: 20px 0;*/
-    /*position: relative;*/
-    /*z-index: 2;*/
-/*}*/
-
 .form input{
     display: block;
     outline: 0;
@@ -104,26 +98,6 @@ div.intro {
 .intro p {
     margin-top: 10px
 }
-    /*-webkit-appearance: button;*/
-    /*-moz-appearance: button;*/
-    /*appearance: button;*/
-
-    /*text-decoration: none;*/
-    /*color: initial;*/
-    /*margin:20px;*/
-    /*width: 150px;*/
-    /*border-radius: 3px;*/
-    /*padding: 10px 15px;*/
-    /*background: white;*/
-    /*text-align: center;*/
-    /*!*font-size: 12px;*!*/
-
-    /*outline: 0;*/
-    /*border: 1px solid rgba(197, 205, 200, 0.8);*/
-    /*background-color: rgba(255,255,255,0.5);*/
-
-    /*font-size: 12px;*/
-    /*font-family: Rubik, sans-serif ;*/
 
 .weeks-container {
     /*display: flex;*/
@@ -147,10 +121,7 @@ form {
     vertical-align: middle;
 }
 
-/* שם טלפון מייל */
 .input-container {
-    /*display: flex;*/
-    /*flex-direction: row-reverse;*/
     justify-content: center;
 }
 
