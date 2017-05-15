@@ -81,7 +81,6 @@ div.intro {
     color: white;
     transition-duration: 0.25s;
     font-family: Rubik, sans-serif ;
-
 }
 
 
@@ -95,6 +94,7 @@ div.intro {
     margin: 10px;
     width: 150px;
 }
+
 .intro p {
     margin-top: 10px
 }
@@ -146,7 +146,6 @@ div.days-container select {
     margin: 10px 10px 10px;
 }
 
-
 .form input:hover{
     background-color: rgba(255,255,255, 0.8);
     color: #68beb4;
@@ -183,6 +182,15 @@ footer {
 }
 
 
+@media all and (max-width:800px)
+{
+    #phone, #name, #email
+    {
+        display: block;
+        float: none;
+        width: 100%;
+    }
+}
 
 /*TODO prettify buttons*/
 
