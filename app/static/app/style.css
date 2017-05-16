@@ -107,7 +107,8 @@ div.intro {
 form {
     /*background: white;*/
     /*border-radius: 5px;*/
-    padding: 20px;
+    padding-right: 10%;
+    padding-left:10%;
 }
 
 .days-container {
