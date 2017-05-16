@@ -34,8 +34,8 @@
                                 <a href="/" class="btn btn-default" role="button">Link Button</a>
 
                             <div class="weeks-container">
-                                <a href="{% url 'app:week' cur_week.url_rpr %}" dir="ltr">{{ cur_week.dates }}</a>
-                                <a href="{% url 'app:week' next_week.url_rpr %}" dir="ltr">{{ next_week.dates }}</a>
+                                <a href="{% url 'app:week' cur_week.url_rpr %}" dir="ltr" class="btn btn-default" role="button">{{ cur_week.dates }}</a>
+                                <a href="{% url 'app:week' next_week.url_rpr %}" dir="ltr" class="btn btn-default" role="button">{{ next_week.dates }}</a>
                             </div>
                         </div>
                     </div>
