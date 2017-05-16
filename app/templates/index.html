@@ -31,6 +31,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="weeks-container">
+                                <a href="/" class="btn btn-default" role="button">Link Button</a>
                                 <a href="{% url 'app:week' cur_week.url_rpr %}" dir="ltr">{{ cur_week.dates }}</a>
                                 <a href="{% url 'app:week' next_week.url_rpr %}" dir="ltr">{{ next_week.dates }}</a>
                             </div>
