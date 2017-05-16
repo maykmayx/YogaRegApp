@@ -128,6 +128,8 @@ div.days-container select {
     /*padding: 10px 15px;*/
     text-align-last: center;
     /*width: auto;*/
+    padding-left:15px;
+    padding-right:15px;
     max-width: 100%;
     /*font-size: 18px;*/
     /*color: grey;*/
