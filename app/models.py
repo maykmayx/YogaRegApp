@@ -39,21 +39,12 @@ class Lesson(models.Model):
     # make num_enrolled update with number of registrations
     def update_num_enrolled(self):
         count = self.registration_set.count()
-        if count == self.max_participants:
+        if count >= self.max_participants:
             self.full = True
+        else:
+            self.full = False
         self.num_enrolled = count
         self.save()
-
-    # enrolled = models.ManyToManyField(Registration, related_name='enrolls')
-    # waitings = models.ManyToManyField(Waiting, related_name='waits')
-
-    # @property
-    # def waiting_list(self):
-    #     return list(self.waitings.all())
-    #
-    # @property
-    # def enrolled_list(self):
-    #     return list(self.enrolled.all())
 
 
     # (mod 7) + 1 to permute to hebrew schedule
