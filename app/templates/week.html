@@ -3,77 +3,152 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Sangha Yoga</title>
+    <!-- TODO copy for other htmls-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-flipped.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <div class="main">
+<div class="main">
         <div class="reg-wrapper">
-            <img src="https://preview.ibb.co/kEfgy5/headerimg.png">
-            <div class="reg-container">
+        <img class="img-responsive" src="https://preview.ibb.co/kEfgy5/headerimg.png">     <!-- TODO img -->
+            <div class="container">
+                <div class="reg-container">
+                    <form class="form row" action="/register" method="POST" name="registration_form" id='registration_form' class="form-inline">
+                        {% csrf_token %}
+                        <div class="row">
 
+                            <strong><p class="col-xs-12" dir="rtl">
+              הרשמה לשבוע
+                                <br>
+                                {{ cur_week }} </p></strong>
+                        </div>
+                        <div class="row">
+                            <div class="intro">
+                            <p valign="middle" dir="rtl">
 
-                <form class="form" action="/register" method="POST">
-                    {% csrf_token %}
-                <p class="intro">
-                    </br>בחרו שיעור, השאירו פרטים מלאים והמערכת תאשר את כניסתכם לשיעור או לרשימת ההמתנה
-                    </br>* ביטול הגעתכם עד 12 שעות לפני מועד השיעור לא מחייב בתשלום *
-                    </br>* הרשמה להמתנה לשיעור לא מחייבת את הגעתכם, רק אם יתאים לכם *
-                </p>
-                <br>
-                <div class="input-container" dir="rtl">
-                    <input class="form-input" name="name" type="text" placeholder="שם" required>
-                    <input class="form-input" name="email" type="email" placeholder="מייל" required>
-                    <input class="form-input" name="phone" type="number" placeholder="טלפון" required>
+                                בחרו שיעור, השאירו פרטים מלאים והמערכת תאשר את כניסתכם לשיעור או לרשימת ההמתנה.
+                               ביטול הגעתכם עד 12 שעות לפני מועד השיעור לא מחייב בתשלום.
+
+                            <br>
+                                <strong>
+                                    אם תבחרו בשיעור מלא תיכנסו לרשימת ההמתנה (לא מחייב את הגעתכם)
+                            </strong>
+                            </p>
+                                </div>
+                        </div>
+                        <div class="row" dir="rtl">
+{#                            <div class="nav navbar-nav">#}
+
+                            <div class="form-group col-xs-4">
+                                <input id="name" class="form-control input-group-lg reg_name" type="text" name="name"
+                                       placeholder="שם" required/>
+                            </div>
+                            <div class="form-group col-xs-4">
+                                <input id="phone" class="form-control input-group-lg reg_name" type="number" name="phone"
+                                       placeholder="טלפון" required/>
+                            </div>
+
+                            <div class="form-group col-xs-4">
+                                <input id="email" class="form-control input-group-lg reg_name" type="email" name="email"
+                                       placeholder="מייל" required/>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="days-container col-xs-12">
+                                <select name="choose-class">
+                                    <option label="בחר/י שיעור" selected></option>
+                                    <optgroup label="ראשון">
+                                            {% for lesson in lessons_sunday %}
+                                                <option value="{{ lesson.pk }}">{{ lesson.time }}
+                                                {% if lesson.full == True %}
+                                                    <span>(מלא)</span>
+                                                {% endif %}
+                                                </option>
+                                            {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="שני">
+                                            {% for lesson in lessons_monday %}
+                                                <option value="{{ lesson.pk }}">{{ lesson.time }}
+                                                {% if lesson.full == True %}
+                                                    <span>(מלא)</span>
+                                                {% endif %}
+                                                </option>
+                                            {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="שלישי">
+                                            {% for lesson in lessons_tuesday %}
+                                                <option value="{{ lesson.pk }}">{{ lesson.time }}
+                                                {% if lesson.full == True %}
+                                                    <span>(מלא)</span>
+                                                {% endif %}
+                                                </option>
+                                            {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="רביעי">
+                                            {% for lesson in lessons_wednesday %}
+                                                <option value="{{ lesson.pk }}">{{ lesson.time }}
+                                                {% if lesson.full == True %}
+                                                    <span>(מלא)</span>
+                                                {% endif %}
+                                                </option>
+                                            {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="חמישי">
+                                            {% for lesson in lessons_thursday %}
+                                                <option value="{{ lesson.pk }}">{{ lesson.time }}
+                                                {% if lesson.full == True %}
+                                                    <span>(מלא)</span>
+                                                {% endif %}
+                                                </option>
+                                            {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="שישי">
+                                            {% for lesson in lessons_friday %}
+                                                <option value="{{ lesson.pk }}">{{ lesson.time }}
+                                                {% if lesson.full == True %}
+                                                    <span>(מלא)</span>
+                                                {% endif %}
+                                                </option>
+                                            {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="שבת">
+                                            {% for lesson in lessons_saturday %}
+                                                <option value="{{ lesson.pk }}">{{ lesson.time }}
+                                                {% if lesson.full == True %}
+                                                    <span>(מלא)</span>
+                                                {% endif %}
+                                                </option>
+                                            {% endfor %}
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button type="submit" class="submit-button">רשמי אותי</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="days-container">
-                <br>
-                    <select name="choose-class">
-                        <option label="בחר/י שיעור" selected></option>
-                        <optgroup label="ראשון">
-                                {% for lesson in lessons_sunday %}
-                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
-                                {% endfor %}
-                        </optgroup>
-                        <optgroup label="שני">
-                                {% for lesson in lessons_monday %}
-                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
-                                {% endfor %}
-                        </optgroup>
-                        <optgroup label="שלישי">
-                                {% for lesson in lessons_tuesday %}
-                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
-                                {% endfor %}
-                        </optgroup>
-                        <optgroup label="רביעי">
-                                {% for lesson in lessons_wednesday %}
-                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
-                                {% endfor %}
-                        </optgroup>
-                        <optgroup label="חמישי">
-                                {% for lesson in lessons_thursday %}
-                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
-                                {% endfor %}
-                        </optgroup>
-                        <optgroup label="שישי">
-                                {% for lesson in lessons_friday %}
-                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
-                                {% endfor %}
-                        </optgroup>
-                        <optgroup label="שבת">
-                                {% for lesson in lessons_thursday %}
-                                    <option value="{{ lesson.pk }}">{{ lesson.time }}</option>
-                                {% endfor %}
-                        </optgroup>
-                    </select>
-                </div>
-                <button type="submit" class="submit-button">רשמי אותי</button>
-            </form>
-                </form>
             </div>
-        <footer>&copy; Site by <a href="mailto:may.yaaron@gmail.com?Subject=Build%20me%20a%20website!" target="_top">May Yaaron</a></footer>
-        </div>
+                <footer>&copy; Site by <a href="mailto:may.yaaron@gmail.com?Subject=Build%20me%20a%20website!" target="_top" data-toggle="tooltip" data-placement="bottom" title="Mail me at may.yaaron@gmail.com">May Yaaron</a></footer>
     </div>
+</div>
 
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 </body>
 </html>

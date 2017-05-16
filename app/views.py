@@ -49,7 +49,7 @@ def get_weeks():
 def week(request, week_date):
     dates = week_date.split('-')[0].split('/')
     start = datetime.date(2017, int(dates[1]), int(dates[0]))
-    return render(request, 'weekk.html', {
+    return render(request, 'week.html', {
         'lessons_sunday': models.Lesson.objects.filter(day=start),
         'lessons_monday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=1)),
         'lessons_tuesday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=2)),
