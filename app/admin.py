@@ -6,9 +6,6 @@ from django.contrib.admin import DateFieldListFilter
 
 admin.site.register(models.Person)
 
-#
-# def deleteReg():
-#     return
 
 
 class RegistrationInline(admin.TabularInline):
