@@ -26,13 +26,14 @@
                         <div class="col-xs-12">
                             <p dir="rtl">היי!<br>
                             מוזמנים/ות להירשם לשיעור יוגה, בחר/י שבוע להרשמה:</p>
+                        <p>לתשומת לבכם: לא יתקיימו שיעורים מה-28 במאי ועד ל-3 ביוני, ומה-17 ביוני ועד ה-24 ביוני.</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="weeks-container">
                                 <a href="{% url 'app:week' cur_week.url_rpr %}" dir="ltr" class="btn btn-default" role="button">{{ cur_week.dates }}</a>
-                                <a href="{% url 'app:week' next_week.url_rpr %}" dir="ltr" class="btn btn-default" role="button">{{ next_week.dates }}</a>
+{#                                <a href="{% url 'app:week' next_week.url_rpr %}" dir="ltr" class="btn btn-default" role="button">{{ next_week.dates }}</a>#}
                             </div>
                         </div>
                     </div>
