@@ -49,15 +49,24 @@ def get_weeks():
 def week(request, week_date):
     dates = week_date.split('-')[0].split('/')
     start = datetime.date(2017, int(dates[1]), int(dates[0]))
+    lessons_sunday = models.Lesson.objects.filter(day=start)
+    lessons_monday = models.Lesson.objects.filter(day=start + datetime.timedelta(days=1))
+    lessons_tuesday = models.Lesson.objects.filter(day=start + datetime.timedelta(days=2))
+    lessons_wednesday = models.Lesson.objects.filter(day=start + datetime.timedelta(days=3))
+    lessons_thursday = models.Lesson.objects.filter(day=start + datetime.timedelta(days=4))
+    lessons_friday = models.Lesson.objects.filter(day=start + datetime.timedelta(days=5))
+    lessons_saturday = models.Lesson.objects.filter(day=start + datetime.timedelta(days=6))
+    empty_week = (not lessons_sunday.exists() and not lessons_monday.exists() and not lessons_tuesday.exists() and not lessons_wednesday.exists() and not lessons_thursday.exists() and not lessons_friday.exists() and not lessons_saturday.exists())
     return render(request, 'week.html', {
-        'lessons_sunday': models.Lesson.objects.filter(day=start),
-        'lessons_monday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=1)),
-        'lessons_tuesday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=2)),
-        'lessons_wednesday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=3)),
-        'lessons_thursday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=4)),
-        'lessons_friday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=5)),
-        'lessons_saturday': models.Lesson.objects.filter(day=start + datetime.timedelta(days=6)),
-        'cur_week': week_date
+        'lessons_sunday': lessons_sunday,
+        'lessons_monday': lessons_monday,
+        'lessons_tuesday': lessons_tuesday,
+        'lessons_wednesday': lessons_wednesday,
+        'lessons_thursday': lessons_thursday,
+        'lessons_friday': lessons_friday,
+        'lessons_saturday': lessons_saturday,
+        'cur_week': week_date,
+        'empty_week': empty_week
     })
 
 
@@ -81,6 +90,7 @@ def register(request):
         # lesson.num_enrolled += 1
         # lesson.enrolled.add(registration)
         result = 'enrolled.html'
+
 
     lesson.save()
     lesson_rpr = lesson.__unicode__().split('@')
