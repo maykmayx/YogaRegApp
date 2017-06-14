@@ -78,7 +78,7 @@ def register(request):
     lesson = models.Lesson.objects.get(pk=lesson_pk)
     person, created = models.Person.objects.get_or_create(name=name, email=email, phone=phone)
     # check for room in class
-    if lesson.num_enrolled > lesson.max_participants:
+    if lesson.num_enrolled >= lesson.max_participants:
         waiting = models.Waiting(person=person, lesson=lesson)
         waiting.save()
         # lesson.waitings.add(waiting)
