@@ -46,6 +46,10 @@ def get_weeks():
     return cur_week, next_week
 
 
+def is_week_empty():
+
+    return True
+
 def week(request, week_date):
     dates = week_date.split('-')[0].split('/')
     start = datetime.date(2017, int(dates[1]), int(dates[0]))
