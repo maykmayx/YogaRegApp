@@ -29,6 +29,7 @@ def index(request):
 def get_url_rpr(week):
     return str(week).replace(' ', '')
 
+
 # 
 def get_weeks():
     now = datetime.datetime.now()
