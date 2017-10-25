@@ -11,7 +11,7 @@ def index(request):
     weeks = get_weeks()
     cur_week = weeks[0]
     next_week = weeks[1]
-    return render(request, 'summer_index.html', {
+    return render(request, 'index.html', {
         'cur_week':
             {
                 'dates': cur_week,
