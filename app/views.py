@@ -52,8 +52,9 @@ def is_week_empty():
     return True
 
 def week(request, week_date):
+    year = year = datetime.date.today().year
     dates = week_date.split('-')[0].split('/')
-    start = datetime.date(2017, int(dates[1]), int(dates[0]))
+    start = datetime.date(year, int(dates[1]), int(dates[0]))
     lessons_sunday = models.Lesson.objects.filter(day=start)
     lessons_monday = models.Lesson.objects.filter(day=start + datetime.timedelta(days=1))
     lessons_tuesday = models.Lesson.objects.filter(day=start + datetime.timedelta(days=2))
