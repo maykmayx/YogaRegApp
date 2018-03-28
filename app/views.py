@@ -11,6 +11,7 @@ def index(request):
     weeks = get_weeks()
     cur_week = weeks[0]
     next_week = weeks[1]
+    pesach = "09/04 - 15/04"
     return render(request, 'index.html', {
         'cur_week':
             {
@@ -21,7 +22,11 @@ def index(request):
             {
                 'dates': next_week,
                 'url_rpr': get_url_rpr(next_week)
-            }
+            },
+        'pesach_week': {  # TODO GET RID OF THS
+            'dates': pesach,
+            'url_rpr': get_url_rpr(pesach)
+        }
     })
 
 

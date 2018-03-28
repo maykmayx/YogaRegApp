@@ -30,7 +30,9 @@
 
                             <!--מוזמנים/ות להירשם לשיעור יוגה.-->
                             <!--</p>-->
-
+                            <p>חג אביב שמח!
+                            <br>
+                            לא יתקיימו שיעורים בחול המועד, נחדש פעילות יוגית ב-9 באפריל</p>
                             <p style="font-size:18px"><b>בחרו שבוע להרשמה:</b></p>
                         </div>
                     </div>
@@ -38,7 +40,9 @@
                         <div class="col-xs-12">
                             <div class="weeks-container">
                                 <a href="{% url 'app:week' cur_week.url_rpr %}" dir="ltr" class="btn btn-default" role="button">{{ cur_week.dates }}</a>
-                                <a href="{% url 'app:week' next_week.url_rpr %}" dir="ltr" class="btn btn-default" role="button">{{ next_week.dates }}</a>
+                                <!--<a href="{% url 'app:week' next_week.url_rpr %}" dir="ltr" class="btn btn-default" role="button">{{ next_week.dates }}</a>-->
+                                <a href="{% url 'app:week' next_week.url_rpr %}" dir="ltr" class="btn btn-default" role="button">{{ pesach_week.dates }}</a>
+                            <!--TODO get rid of this -->
                             </div>
                         </div>
                     </div>
